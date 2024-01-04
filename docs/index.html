@@ -23,41 +23,42 @@ layout: default
         
         <!-- 1_organize-offering-data.gs -->
         <section>
-          <h3 id="1-1_organize-offering-data">1. Organize Offering Data</h3>
+          <h3 id="1-1_organize-offering-data">1. Organize Course Offering Data</h3>
           <p>This script focuses on structuring course offering data from a provided dataset. It filters and restructures the data into the one consistent with the institution's database, ensuring that course codes, semesters, and faculty details are laid out and ready for analysis.</p>
           <!-- Logic and Usage -->
           <p><strong>Logic:</strong></p>
-            <ul>
+            <ol>
               <li>The script starts by reading course offering data from the '1_Offering Data by Program' sheet.</li>
-              <li>It then filters out specific course codes that are predefined and do not require checks. These course codes are defined in the constant variables set before the function (e.g., 'MXD304', 'WNV327').</li>
+              <li>It then filters out specific course codes that are predefined and do not require being displayed. These course codes are defined in the constant variables set before the function (e.g., 'MXD304', 'WNV327').</li>
               <li>The organized data (Course Code, Semester, Faculty) is then displayed on the '1_Organized Offering Data' sheet.</li>
-            </ul>
+            </ol>
 
           <p><strong>Usage:</strong>
-          <ul>
+          <ol>
             <li>Insert the course offering data, supplied by the target Program, into the orange cells of the '1_Offering Data by Program' sheet.</li>
-            <li>Navigate to the '1_Organized Offering Data' sheet and initiate the automatic display of the organized offering data by clicking the designated button.</li>
-          </ul>
+            <li>Navigate to the '1_Organized Offering Data' sheet and click the designated button.</li>
+            <li>Organized course offering data will be automatically displayed in columns A ~ C.</li>
+          </ol>
           <div class="row">
             <div class="col-md-6">
               <figure>
                 <img src="assets/images/1_Offering Data by Program.png" alt="Data Insertion" class="img-fluid">
-                <figcaption class="figure-caption">Data Insertion</figcaption>
+                <figcaption class="figure-caption">Figure: Data Insertion</figcaption>
               </figure>
             </div>
             <div class="col-md-6">
               <figure>
-                <img src="assets/images/1_Organized Offering Data.png" alt="Organized Data Display" class="img-fluid">
-                <figcaption class="figure-caption">Organized Data Display</figcaption>
+                <img src="assets/images/1_Organized Offering Data.png" alt="Organized Data Display" class="img-fluid" height="200">
+                <figcaption class="figure-caption">Figure: Organized Data Display</figcaption>
               </figure>
             </div>
           </div>
 
           <p><strong>Note:</strong>
           <ul>
-            <li>The function will prompt for the names of the source and destination sheets.</li>
+            <li>The function will prompt for the names of the source and display sheets.</li>
             <li>You can manually change the sheet names as needed.</li>
-            <li>You can also modify the values of the constant variables as needed. For example, if there are additional course codes that do not require checks, you can add them to the `COURSES_NOT_CHECKED` array.</li>
+            <li>You can also modify the values of the constant variables in `Apps Script` as needed. For example, if there are additional course codes that do not require being displayed, you can add them to the `COURSES_NOT_CHECKED` array.</li>
           </ul>
         </section>
 
@@ -72,33 +73,33 @@ layout: default
 
           <!-- Logic -->
           <p><strong>Logic:</strong></p>
-          <ul>
+          <ol>
             <li>The script starts by reading class schedule data from the '2-1_Schedule Data by Program' sheet.</li>
-            <li>It checks each cell against a specific pattern (three alphabets followed by three digits). If the cell data matches, the cell data is stored. If it does not match the pattern, it is stored as an exceptional case.</li>
-            <li>The script then processes the remaining data. This involves grouping data based on course code and day.</li>
+            <li>It checks each cell against a specific pattern (three alphabets followed by three digits). If the cell data matches, the cell data is stored. If it does not match the pattern, it is stored as an exceptional record.</li>
+            <li>The script then processes grouping data based on course code and day.</li>
             <li>Upon grouping, the script examines records with the same day, and merges them, except when the class number includes "2" and "3" due to the lunch break in-between. After this process, the script sorts the organized data by course code.</li>
-            <li>The organized data is then displayed on the '2-1_Organized Schedule Data' sheet, while exceptional cases are listed separately on the sheet.</li>
-          </ul>
+            <li>The organized data for regular courses are then displayed in columns A ~ E in on the '2-1_Organized Schedule Data' sheet, while exceptional cases are listed separately in column G.</li>
+          </ol>
 
           <!-- Usage -->
           <p><strong>Usage:</strong></p>
-          <ul>
+          <ol>
             <li>Insert the class schedule data, supplied by the target Program, into the orange cells of the '2-1_Schedule Data by Program' sheet.</li>
-            <li>Navigate to the '2-1_Organized Schedule Data' sheet and initiate the automatic display of the organized schedule data by clicking the designated button.</li>
-            <li>You can manually change the sheet names as needed.</li>
-          </ul>
+            <li>Navigate to the '2-1_Organized Schedule Data' sheet and click the designated button.</li>
+            <li>Organized class schedule data is automatically displayed in columns A ~ E and G.</li>
+          </ol>
 
           <div class="row">
             <div class="col-md-6">
               <figure>
                 <img src="assets/images/2-1_Schedule Data by Program.png" alt="Data Insertion" class="img-fluid">
-                <figcaption class="figure-caption">Data Insertion</figcaption>
+                <figcaption class="figure-caption">Figure: Data Insertion</figcaption>
               </figure>
             </div>
             <div class="col-md-6">
               <figure>
-                <img src="assets/images/2-1_Organized Schedule Data.png" alt="Organized Data Display" class="img-fluid">
-                <figcaption class="figure-caption">Organized Data Display</figcaption>
+                <img src="assets/images/2-1_Organized Schedule Data.png" alt="Organized Data Display" class="img-fluid" height="400">
+                <figcaption class="figure-caption">Figure: Organized Data Display</figcaption>
               </figure>
             </div>
           </div>
@@ -121,43 +122,44 @@ layout: default
 
           <!-- Logic -->
           <p><strong>Logic:</strong></p>
-          <ul>
+          <ol>
             <li>The script begins by extracting class schedule data from the '2-2_Schedule Data by Program' sheet.</li>
-            <li>It then validates each cell's initial element against a specific pattern (three alphabets followed by three digits). If the pattern is not matched, the data is ignored. If it matches, the cell data is parsed into course codes, course title, and faculties. Any faculty name that matches a pre-defined name in the constant variable is adjusted accordingly.</li>
+            <li>It then validates each cell's initial element against a specific pattern (three alphabets followed by three digits). If the pattern is not matched, the data is ignored. If it matches, the cell data is parsed into course codes, course titles, and faculties. Any faculty name that matches a pre-defined name in the constant variable is adjusted accordingly.</li>
             <li>Next, the script processes the data, generating multiple records if course codes contain "/" or faculties contain ",". It then groups these records based on course code, day, and faculty.</li>
             <li>Once grouped, the script scrutinizes records with the same day and merges them, except when the class number includes "2" and "3" due to the lunch break in-between. The data is then organized by course code.</li>
-            <li>Finally, the processed data is displayed on the '2-2_Organized Schedule Data' sheet. Any exceptions are listed separately.</li>
-          </ul>
+            <li>Finally, the processed data is automatically displayed in columns A ~ G on the '2-2_Organized Schedule Data' sheet.</li>
+          </ol>
 
           <!-- Usage -->
           <p><strong>Usage:</strong></p>
-          <ul>
+          <ol>
             <li>Insert the class schedule data, supplied by the target Program, into the orange cells of the '2-2_Schedule Data by Program' sheet.</li>
-            <li>Navigate to the '2-2_Organized Schedule Data' sheet and initiate the automatic display of the organized schedule data by clicking the designated button.</li>
-          </ul>
+            <li>Navigate to the '2-2_Organized Schedule Data' sheet and click the designated button.</li>
+            <li>Organized class schedule data is automatically displayed in columns A ~ G.</li>
+          </ol>
 
           <div class="row">
             <div class="col-md-6">
               <figure>
                 <img src="assets/images/2-2_Schedule Data by Program.png" alt="Data Insertion" class="img-fluid">
-                <figcaption class="figure-caption">Data Insertion</figcaption>
+                <figcaption class="figure-caption">Figure: Data Insertion</figcaption>
               </figure>
             </div>
             <div class="col-md-6">
               <figure>
-                <img src="assets/images/2-2_Organized Schedule Data.png" alt="Organized Data Display" class="img-fluid">
-                <figcaption class="figure-caption">Organized Data Display</figcaption>
+                <img src="assets/images/2-2_Organized Schedule Data.png" alt="Organized Data Display" class="img-fluid" height="400">
+                <figcaption class="figure-caption">Figure: Organized Data Display</figcaption>
               </figure>
             </div>
           </div>
 
           <p><strong>Note:</strong></p>
-          <ul>
+          <ol>
             <li>The function will prompt for the names of the source and destination sheets.</li>
             <li>You can manually change the sheet names as needed.</li>
             <li>The function handles day conversion from English to Japanese.</li>
-            <li>You can also modify the values of the constant variables as needed. For example, if there are additional faculty names that require adjustment, you can add them to the `FACULTY_NAMES` array.</li>
-          </ul>
+            <li>You can also modify the values of the constant variables as needed. For example, if there are additional faculty names that require adjustment, you can add them to the `FACULTY_NAME_REPLACEMENT` array.</li>
+          </ol>
         </section>
 
         <!-- Divider -->
@@ -167,36 +169,36 @@ layout: default
         <!-- 2-3_organize-schedule-data.gs -->
         <section>
           <h2 id="2-3_organize-schedule-data">2-3. Organize Schedule Data (Type 3)</h2>
-          <p>This Google Apps Script is designed to reformat class schedule data to match the institution's data management systems. It organizes important details such as course codes, titles, faculty names, class days and numbers, and start and end times. This provides a simplified and accessible view for further analysis and reporting.</p>
+          <p>This Google Apps Script is designed to reformat class schedule data to match the institution's data management systems. It organizes details such as course codes, titles, faculty names, class days and numbers, and start and end times. This provides a simplified and accessible view for further analysis and reporting.</p>
 
           <!-- Logic -->
           <p><strong>Logic:</strong></p>
-          <ul>
+          <ol>
             <li>Starts by getting schedule data from '2-3_Schedule Data by Program'.</li>
             <li>Checks each data entry to make sure it's in the right format, specifically three letters followed by three digits for course codes.</li>
-            <li>During course record processing, the script checks if the course code includes a slash. If so, it splits the course code and creates two separate records. If the course code is part of a designated category (EAA course), it retrieves the section code from the second row of the sheet to form the class code. In other cases, it checks if the course code includes a "-", and if not, appends "-1" to form the class code.</li>
-            <li>When pushing records, the script checks if the target course is in a category that doesn't require a second record. If so, it creates only one record. Otherwise, it creates multiple records (for Monday & Wednesday, Tuesday & Thursday) based on the column location of the course record cell.</li>
-            <li>The script validates each item of the course record. If an item is not valid, it highlights the value in red on the display sheet for easy identification.</li>
-            <li>Organizes the data on the '2-3_Organized Schedule Data' sheet, and makes sure to handle any exceptions.</li>
-          </ul>
+            <li>During course record processing, the script checks if the course code includes a slash. If so, it splits the course code and creates two separate records. If the course code is part of a designated category (i.e., EAA course), it retrieves the section code from the second row of the sheet to form the class code. In other cases, it checks if the course code includes a "-", and if not, appends "-1" to form the class code.</li>
+            <li>When pushing records, the script checks if the target course is in a category that doesn't require a second record. If so, it creates only one record. If the course cell is located in either Monday & Wednesday range or Tuesday & Thursday range, multiple records are created. If it is located in Friday range, only one record is created.</li>
+            <li>Processed data is displayed in columns A ~ G on the '2-3_Organized Schedule Data' sheet. While displaying data, the script validates each item of the course record. If an item is not valid, it highlights the value in red on the display sheet for easy identification.</li>
+          </ol>
 
           <!-- Usage -->
           <p><strong>Usage:</strong></p>
-          <ul>
+          <ol>
               <li>Start by filling in the '2-3_Schedule Data by Program' sheet with the class schedule data for each program. Make sure that data are input in the range colored in orange.</li>
-              <li>Next, go to the '2-3_Organized Schedule Data' sheet and start the script by clicking on a special button. This will start the process of organizing the data.</li>
-          </ul>          
+              <li>Next, go to the '2-3_Organized Schedule Data' sheet and click the designated button.</li>
+              <li>Organized class schedule data is automatically displayed in columns A ~ G.</li>
+          </ol>          
           <div class="row">
             <div class="col-md-6">
               <figure>
                 <img src="assets/images/2-3_Schedule Data by Program.png" alt="Data Insertion" class="img-fluid">
-                <figcaption class="figure-caption">Data Insertion</figcaption>
+                <figcaption class="figure-caption">Figure: Data Insertion</figcaption>
               </figure>
             </div>
             <div class="col-md-6">
               <figure>
                 <img src="assets/images/2-3_Organized Schedule Data.png" alt="Organized Data Display" class="img-fluid">
-                <figcaption class="figure-caption">Organized Data Display</figcaption>
+                <figcaption class="figure-caption">Figure: Organized Data Display</figcaption>
               </figure>
             </div>
           </div>
@@ -206,7 +208,7 @@ layout: default
               <li>The script will ask for the names of the source and destination sheets.</li>
               <li>You can change the sheet names later if you need to.</li>
               <li>The script can convert day names between English and Japanese.</li>
-              <li>The script is made so you can change parts of it. For example, you can change the `FACULTY_NAME_REPLACE` constant to match the names used at your institution.</li>
+              <li>The script is made so you can change parts of it. For example, you can change the `FACULTY_NAME_REPLACEMENT` constant to match the names used at your institution.</li>
           </ul>
         </section>
     </div>
