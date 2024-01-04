@@ -233,22 +233,22 @@ function pushCourseRecord_(records, cellColumn, rawValue, classCode, faculty, st
  * @param {Object} displaySheet - The Google Sheet object where records will be displayed.
  */
 function displayRecords_(records,header,displaySheet){
-  displaySheet.getRange("A:G").clearContent();
-  displaySheet.clearFormats()
-  displaySheet.getRange("A2:G").setBackground('#E7FCDB').setVerticalAlignment('middle');
-  displaySheet.getRange(1,1,1,header.length)
-                                      .setValues([header])
-                                      .setFontWeight('bold')
-                                      .setBackground('#B4B4B4')
-                                      .setHorizontalAlignment("center")
-                                      .setVerticalAlignment('middle');
-  displaySheet.getRange("A2:A").setFontSize(7);
-  displaySheet.getRange("H:H").setBackground('#B4B4B4');
+  displaySheet.getRange("A2:G").clearContent();
+
+  // Get the range A2:G in the displaySheet
+  let range = displaySheet.getRange("A3:G");
+  // Clear font weight and background color in the specified range
+  range.setFontWeight(null);  // Clears font weight
+  range.setBackground(null);  // Clears background color
+
+  displaySheet.getRange("A3:G").setBackground('#E7FCDB');
+  displaySheet.getRange(2,1,1,header.length)
+                                      .setValues([header]);
 
   // Write records to the sheet starting from row 2
-  displaySheet.getRange(2, 1, records.length, header.length).setValues(records).setHorizontalAlignment("center");
+  displaySheet.getRange(3, 1, records.length, header.length).setValues(records);
   //Set number format for start time and end time
-  displaySheet.getRange(2,5,records.length,2).setNumberFormat("@");
+  displaySheet.getRange(3,5,records.length,2).setNumberFormat("@");
 
   //Structure of each column
   let courseCodePattern = /^[A-Z]{3}\d{3}-[0-9A-Za-z]_[FS]$/;
