@@ -1,4 +1,4 @@
 # Site settings
 theme: jekyll-theme-primer
 title: 'Course Organization System'
-description: 'This Google Apps Script suite automates course data standardization within Google Sheets for academic entities. It aligns data presentation across programs, streamlines data management, and matches the institution's database format. This enhances efficiency, reduces manual errors, and ensures easy data retrieval.'
+description: 'This Google Apps Script suite automates course data standardization within Google Sheets for academic entities.'
